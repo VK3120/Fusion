@@ -237,10 +237,22 @@ class AssistantshipClaimFormStatusUpd(models.Model):
     TA_rejected = models.BooleanField()
     Ths_approved = models.BooleanField()
     Ths_rejected = models.BooleanField()
-    HOD_approved = models.BooleanField()
-    HOD_rejected = models.BooleanField()
     Acad_approved = models.BooleanField()
     Acad_rejected = models.BooleanField()
+
+    # Removed Fields
+    # HOD_approved = models.BooleanField()
+    # HOD_rejected = models.BooleanField()
+
+    # New Fields
+    dean_approved = models.BooleanField(default=False)
+    dean_rejected = models.BooleanField(default=False)
+    dept_admin_approved = models.BooleanField(default=False)
+    dept_admin_rejected = models.BooleanField(default=False)
+    director_approved = models.BooleanField(default=False)
+    director_rejected = models.BooleanField(default=False)
+    acad_admin_approved = models.BooleanField(default=False)
+    acad_admin_rejected = models.BooleanField(default=False)
 
     amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     rate = models.DecimalField(max_digits=10, decimal_places=2, default=0)
@@ -248,6 +260,7 @@ class AssistantshipClaimFormStatusUpd(models.Model):
     full_day_leave = models.IntegerField(default=0)
 
     remark = models.TextField(default='')  # New field with an empty default value
+
 
     def clean(self):
         start_date = self.cleaned_data['start_date']
